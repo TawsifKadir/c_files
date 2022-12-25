@@ -1,3 +1,9 @@
+typedef struct player{
+    char name[100];
+    char score[5];
+}player;
+
+
 //separate name and score from string
 
 void segregate_string(char string[],char name[],char score[])
