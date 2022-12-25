@@ -1,0 +1,57 @@
+//separate name and score from string
+
+void segregate_string(char string[],char name[],char score[])
+{
+    int i=0,j=0;
+    while(string[i] != ';')
+    {
+        name[i] = string[i];
+        i++;
+    }
+    name[i] = 0;i++;
+    while(string[i])
+    {
+        score[j] = string[i];
+        i++;j++;
+    }
+    score[j] = 0;
+}
+
+//save data to file
+
+void save(char player_name[],int score)
+{
+    FILE *fp;
+    char str_score[6];
+    remove_enter(player_name);
+    sprintf(str_score,";%d",score);
+    strcat(player_name,str_score);
+    fp = fopen("file.txt","a");
+    fprintf(fp,"%s\n",player_name);
+    fclose(fp);
+    return;
+}
+
+//load score from file.
+
+void load_score(player player_info[])
+{
+    FILE *fp;
+    fp = fopen("file.txt","r");
+    char string[100],player_name[100],player_score[6];
+    for(int i=0;i<5;i++)
+    {
+        if(fgets(string,100,fp))
+        {
+            segregate_string(string,player_name,player_score);
+            strcpy(player_info[i].name,player_name);
+            strcpy(player_info[i].score,player_score);
+        }
+        else
+        {
+            strcpy(player_info[i].name,"");
+            strcpy(player_info[i].score,"");
+        }
+    }
+    fclose(fp);
+}
