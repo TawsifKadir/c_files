@@ -6,6 +6,21 @@ typedef struct player{
 
 //separate name and score from string
 
+
+void remove_enter(char *string)
+{
+    while(*string)
+    {
+        if(*string ==  '\n')
+        {
+            *string = 0;
+            return;
+        }
+        string++;
+    }
+}
+
+
 void segregate_string(char string[],char name[],char score[])
 {
     int i=0,j=0;
