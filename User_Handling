@@ -1,16 +1,22 @@
 int load(u users[]){
     int name_index = 0;
     int pass_index = 0;
+    char buffer[50];
+
     int size = 0;
     FILE *p;
     p = fopen("ok.txt","r");
     if(p!=NULL){
         while(!feof(p)){
             if(size % 2 == 0){
-                fgets(users[name_index].name,10,p);
+                fgets(buffer,10,p);
+                buffer[strlen(buffer)-1] = 0;
+                strcpy(users[name_index].name,buffer);
                 name_index++;size++;
             }else{
-                fgets(users[pass_index].pass,10,p);
+                fgets(buffer,10,p);
+                buffer[strlen(buffer)-1] = 0;
+                strcpy(users[pass_index].pass,buffer);
                 pass_index++;size++;
             }
         }
