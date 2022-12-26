@@ -21,3 +21,17 @@ int load(u users[]){
     }
     return size/2;
 }
+
+
+
+void save(u user){
+    FILE *p;
+    p = fopen("ok.txt","a");
+    if(p!=NULL){
+        fprintf(p,"%s\n%s\n",user.name,user.pass);
+        printf("User added\n");
+    }
+    else{
+        printf("File could not be opened");
+    }
+}
