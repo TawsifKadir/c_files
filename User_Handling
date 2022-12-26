@@ -28,7 +28,17 @@ int load(u users[]){
     return size/2;
 }
 
-
+int checkUser(u user){
+    u users[50];
+    int size = load(users);
+    for(int i=0;i<size;i++){
+        if(strcmp(users[i].name,user.name)==0 && strcmp(users[i].pass,user.pass)==0){
+            printf("User found");
+            return 1;
+        }
+    }
+    return 0;
+}
 
 void save(u user){
     FILE *p;
