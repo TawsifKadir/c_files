@@ -58,3 +58,14 @@ void save(u user){
         printf("File could not be opened");
     }
 }
+
+int discountCheck(char name[]){
+    u users[50];
+    int size = load(users);
+    for(int i=0;i<size;i++){
+        if(strcmp(name,users[i].name) == 0){
+            return 1;
+        }
+    }
+    return 0;
+}
